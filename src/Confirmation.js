@@ -1,24 +1,69 @@
 import React from 'react';
 import './App.css';
+import {Link} from "react-router-dom";
 
 
 export default class Confirmation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedDay: null,
-            selectedStartHour: 43200000,
-            selectedEndHour: 61200000,
+            selectedEndHour: null,
             firstName: null,
             lastName: null,
+            email: null,
 
         };
     }
 
+    submitForm() {
+        const EmailInput = document.querySelector("#Email");
+        const FirstInput = document.querySelector("#First");
+        const LastInput = document.querySelector("#Last");
+        if (FirstInput.value === "") {
+            FirstInput.classList.add("missing");
+            window.alert("Fill in First Name");
+        }
+        if (LastInput.value === "") {
+            LastInput.classList.add("missing");
+            window.alert("Fill in Last Name");
+        }
+        if (EmailInput.value === "") {
+            EmailInput.classList.add("missing");
+            window.alert("Fill in Email");
+        } else if (
+            FirstInput.value != "" &&
+            LastInput.value != "" &&
+            EmailInput.value != ""
+        ) {
+            window.alert("Meeting Scheduled! Thank you " + FirstInput.value);
+            if (FirstInput.classList.contains("missing")) {
+                FirstInput.classList.remove("missing");
+            }
+            if (LastInput.classList.contains("missing")) {
+                LastInput.classList.remove("missing");
+            }
+            if (EmailInput.classList.contains("missing")) {
+                EmailInput.classList.remove("missing");
+            }
+
+
+        }
+    }
 
     render() {
         return (
+            <div className= 'Frame'>
            <div className = 'confirmationForm'>
+               <div className="row">
+                   <Link to="/">
+                       <div className="ui inverted red animated toggle button" tabIndex="0">
+                           <div className="visible content">Back</div>
+                           <div className="hidden content">
+                               <i className="x icon"></i>
+                           </div>
+                       </div>
+                   </Link>
+               </div>
                <div className="row">
                    <div className="ui form">
                        <div className="inline fields">
@@ -51,6 +96,7 @@ export default class Confirmation extends React.Component {
                    <input
                        type="text"
                        placeholder="Hi👨‍💻 @gmail.com"
+                       id = "Email"
                    />
                </div>
 
@@ -58,6 +104,7 @@ export default class Confirmation extends React.Component {
                    <label>First Name</label>
                    <input type="text"
                           placeholder="🦕🦕🦕🦕🦕"
+                          id = "First"
                    />
                </div>
 
@@ -66,11 +113,19 @@ export default class Confirmation extends React.Component {
                    <input
                        type="text"
                        placeholder="🐧🐧🐧🐧🐧"
+                       id = "Last"
                    />
                </div>
-
-               <button id="submit-button">Submit</button>
+               <div className="row">
+                   <div className="ui inverted green fluid animated toggle button" tabIndex="0" onClick={this.submitForm}>
+                       <div className="visible content">Submit</div>
+                       <div className="hidden content">
+                           <i className="check icon"></i>
+                       </div>
+                   </div>
+               </div>
            </div>
+            </div>
         );
     }
 }

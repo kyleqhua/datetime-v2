@@ -15,6 +15,7 @@ export default class TimeRow extends React.Component {
     maps(listofTimes) {
         return listofTimes.map(time => <TimeCard
             date = {new Date(time)}
+            syncSHour = {this.props.syncSHour}
         >
 
         </TimeCard>

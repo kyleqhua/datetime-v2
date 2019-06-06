@@ -1,60 +1,37 @@
 import React from "react";
-import Calender from "./Calender";
 import Confirmation from "./Confirmation";
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-
+import App from './App';
 
 export default class Dashboard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedDay: null,
+            selectedStartHour: null,
+            selectedEndHour: null,
+        };
+    }
+
+    syncDates(day){
+        day.setHours(0)
+        this.setState({
+            selectedDay: day,
+        });
+    }
+
+    syncSHour(start){
+        this.setState({
+            selectedStartHour: start,
+        });
+    }
 
     render() {
         return (
-            <div>
-                <Router>
-                    <div>
-                        <div className="ui cards">
-                            <div className="card">
-                                <div className="content">
-                                    <div className="description">
-                                        Hello
-                                    </div>
-                                    <div className="extra content">
-                                        <Link to="/confirm">
-                                            <div className="ui inverted green fluid animated toggle button" tabIndex="0">
-                                                <div className="visible content">con</div>
-                                                <div className="hidden content">
-                                                    <i className="right arrow icon"></i>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="ui cards">
-                            <div className="card">
-                                <div className="content">
-                                    <div className="description">
-                                        Hello
-                                    </div>
-                                    <div className="extra content">
-                                        <Link to="/cal">
-                                            <div className="ui inverted green fluid animated toggle button" tabIndex="0">
-                                                <div className="visible content">cal</div>
-                                                <div className="hidden content">
-                                                    <i className="right arrow icon"></i>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <Route exact path="/" component={Dashboard} />
-                        <Route path="/cal" component={Calender} />
-                        <Route path="/confirm" component={Confirmation} />
-                    </div>
-                </Router>
-            </div>
+            <Router>
+                <Route exact path= "/"  render={(props) => <App sync = {this.syncDates.bind(this)}  selectedDay = {this.state.selectedDay} syncSHour = {this.syncSHour.bind(this)}/>} />
+                <Route path = "/confirm" component={Confirmation} />
+            </Router>
         );
     }
 }
