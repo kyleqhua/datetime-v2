@@ -15,40 +15,7 @@ export default class Confirmation extends React.Component {
         };
     }
 
-    submitForm() {
-        const EmailInput = document.querySelector("#Email");
-        const FirstInput = document.querySelector("#First");
-        const LastInput = document.querySelector("#Last");
-        if (FirstInput.value === "") {
-            FirstInput.classList.add("missing");
-            window.alert("Fill in First Name");
-        }
-        if (LastInput.value === "") {
-            LastInput.classList.add("missing");
-            window.alert("Fill in Last Name");
-        }
-        if (EmailInput.value === "") {
-            EmailInput.classList.add("missing");
-            window.alert("Fill in Email");
-        } else if (
-            FirstInput.value != "" &&
-            LastInput.value != "" &&
-            EmailInput.value != ""
-        ) {
-            window.alert("Meeting Scheduled! Thank you " + FirstInput.value);
-            if (FirstInput.classList.contains("missing")) {
-                FirstInput.classList.remove("missing");
-            }
-            if (LastInput.classList.contains("missing")) {
-                LastInput.classList.remove("missing");
-            }
-            if (EmailInput.classList.contains("missing")) {
-                EmailInput.classList.remove("missing");
-            }
 
-
-        }
-    }
 
     render() {
         return (
@@ -118,14 +85,14 @@ export default class Confirmation extends React.Component {
                </div>
                <div className="row">
                    <div className="ui inverted green fluid animated toggle button" tabIndex="0" onClick={this.submitForm}>
-                       <div className="visible content">Submit</div>
-                       <div className="hidden content">
-                           <i className="check icon"></i>
-                       </div>
-                   </div>
-               </div>
-           </div>
-            </div>
-        );
-    }
+                       <div className="visible content">{this.props.selectedDay.toLocaleString()}</div>
+<div className="hidden content">
+    <i className="check icon"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+);
+}
 }

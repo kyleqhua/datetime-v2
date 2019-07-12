@@ -23,6 +23,7 @@ export default class TimeRow extends React.Component {
     }
     render() {
         return (
+
             <div className= 'TimeRowHeader'>
                 <div className= 'TimeRow'>
                     <p>Please pick a time.</p>
