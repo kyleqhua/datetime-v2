@@ -30,7 +30,7 @@ export default class Dashboard extends React.Component {
         return (
             <Router>
                 <Route exact path= "/"  render={(props) => <App sync = {this.syncDates.bind(this)}  selectedDay = {this.state.selectedDay} syncSHour = {this.syncSHour.bind(this)}/>} />
-                <Route path = "/confirm" render={(props) => <Confirmation selectedDay = {this.state.selectedDay} />}  />
+                <Route path = "/confirm" render={(props) => <Confirmation selectedDay = {this.state.selectedDay} mess = {"Uifsf podf xbt b cpz obnfe Tibzmbo -4"} />}  />
             </Router>
         );
     }

@@ -45,12 +45,12 @@ export default class Confirmation extends React.Component {
     
     whenEnter (e) {
         let tarDate = new Date(2019, 3, 20, 0, 0, 0, 0);
-        let day = this.props.selectedDay.toLocaleString();
+        let day = this.props.selectedDay;
         let email = this.state.email;
         let fname = this.state.firstName;
         let lname = this.state.lastName;
-        if (email === "kylehuuuuaaaaaaaaaaaaaaaaaaaa@berkeley.edu" && (fname === "Kyle" || fname === "kyle") && (lname === "hua" || lname === "Hua")) {
-            window.alert("Uifsf podf xbt b cpz obnfe Tibzmbo -4");
+        if (email === "kylehuuuuaaaaaaaaaaaaaaaaaaaa@berkeley.edu" && (fname === "Kyle" || fname === "kyle") && (lname === "hua" || lname === "Hua") && day.getDate() === tarDate.getDate() && day.getMonth() == tarDate.getMonth()) {
+            window.alert(this.props.mess);
         } else {
             window.alert("wrong entry");
         }
