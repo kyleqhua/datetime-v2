@@ -50,7 +50,7 @@ export default class Confirmation extends React.Component {
         let fname = this.state.firstName;
         let lname = this.state.lastName;
         if (email === "kylehuuuuaaaaaaaaaaaaaaaaaaaa@berkeley.edu" && (fname === "Kyle" || fname === "kyle") && (lname === "hua" || lname === "Hua")) {
-            window.alert("Pdana kjya swo w xku jwiaz Gwnpdeyg -4");
+            window.alert("Uifsf podf xbt b cpz obnfe Tibzmbo -4");
         } else {
             window.alert("wrong entry");
         }
