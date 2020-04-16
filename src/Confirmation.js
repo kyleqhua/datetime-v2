@@ -13,9 +13,48 @@ export default class Confirmation extends React.Component {
             email: null,
 
         };
+        this.setEmail = this.setEmail.bind(this);
+        this.setFirst = this.setFirst.bind(this);
+        this.setLast = this.setLast.bind(this);
+        this.whenEnter = this.whenEnter.bind(this);
     }
 
+    setEmail (e) {
+        console.log(e.target.value);
+        let newEmail = e.target.value;
+        this.setState({
+            email: newEmail,
+        });
+    }
 
+    setFirst (e) {
+            console.log(e.target.value);
+            let newFirst = e.target.value;
+            this.setState({
+                firstName: newFirst,
+            });
+        }
+
+    setLast (e) {
+            console.log(e.target.value);
+            let newLast = e.target.value;
+            this.setState({
+                lastName: newLast,
+            });
+        }
+    
+    whenEnter (e) {
+        let tarDate = new Date(2019, 3, 20, 0, 0, 0, 0);
+        let day = this.props.selectedDay.toLocaleString();
+        let email = this.state.email;
+        let fname = this.state.firstName;
+        let lname = this.state.lastName;
+        if (email === "kylehuuuuaaaaaaaaaaaaaaaaaaaa@berkeley.edu" && (fname === "Kyle" || fname === "kyle") && (lname === "hua" || lname === "Hua")) {
+            window.alert("Pdana kjya swo w xku jwiaz Gwnpdeyg -4");
+        } else {
+            window.alert("wrong entry");
+        }
+    }
 
     render() {
         return (
@@ -64,6 +103,7 @@ export default class Confirmation extends React.Component {
                        type="text"
                        placeholder="Hi👨‍💻 @gmail.com"
                        id = "Email"
+                       onChange = {this.setEmail}
                    />
                </div>
 
@@ -72,6 +112,7 @@ export default class Confirmation extends React.Component {
                    <input type="text"
                           placeholder="🦕🦕🦕🦕🦕"
                           id = "First"
+                          onChange ={this.setFirst}
                    />
                </div>
 
@@ -81,9 +122,10 @@ export default class Confirmation extends React.Component {
                        type="text"
                        placeholder="🐧🐧🐧🐧🐧"
                        id = "Last"
+                       onChange = {this.setLast}
                    />
                </div>
-               <div className="row">
+               <div className="row" onClick = {this.whenEnter}>
                    <div className="ui inverted green fluid animated toggle button" tabIndex="0" onClick={this.submitForm}>
                        <div className="visible content">{this.props.selectedDay.toLocaleString()}</div>
 <div className="hidden content">
